@@ -1,0 +1,22 @@
+{
+    "name": "grzesieksocha/advent_of_code_2023",
+    "description": "Advent of Code 2023 Solutions",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "GrzesiekSocha\\AdventOfCode2023\\": "src/"
+        }
+    },
+    "scripts": {
+        "solve": "php src/main.php"
+    },
+    "authors": [
+        {
+            "name": "grzesieksocha",
+            "email": "grzesiek.soch@gmail.com"
+        }
+    ]
+}
