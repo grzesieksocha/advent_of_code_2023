@@ -7,7 +7,7 @@ use GrzesiekSocha\AdventOfCode2023\Utils\Result\Result;
 use GrzesiekSocha\AdventOfCode2023\Utils\ResultInterface;
 use GrzesiekSocha\AdventOfCode2023\Utils\SolutionResolverInterface;
 
-class FirstPartSolution implements SolutionResolverInterface
+class SecondPartSolution implements SolutionResolverInterface
 {
     private const NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -61,22 +61,27 @@ class FirstPartSolution implements SolutionResolverInterface
             }
         }
 
-        $sumOfParts = 0;
+        $gears = [];
         foreach ($numbers as $numberData) {
             $row = $numberData['row'];
             $column = $numberData['column'];
             $number = $numberData['number'];
             for ($rk = $row - 1; $rk <= $row + 1; $rk++) {
                 for ($ck = $column - 1; $ck <= $column + strlen($number); $ck++) {
-                    if (isset($symbols[$rk][$ck])) {
-                        $sumOfParts += (int) $number;
-
-                        break 2;
+                    if (isset($symbols[$rk][$ck]) && $symbols[$rk][$ck] === '*') {
+                        $gears[sprintf('%s_%s', $rk, $ck)][] = (int) $number;
                     }
                 }
             }
         }
 
-        return new Result($sumOfParts);
+        $sum = 0;
+        foreach ($gears as $gear) {
+            if (count($gear) === 2) {
+                $sum += $gear[0] * $gear[1];
+            }
+        }
+
+        return new Result($sum);
     }
 }
