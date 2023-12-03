@@ -9,14 +9,14 @@ use GrzesiekSocha\AdventOfCode2023\Utils\SolutionFinder;
 require __DIR__ . '/../vendor/autoload.php';
 
 $fileHandle = fopen(
-    __DIR__ . sprintf('/Day%s/data/input.txt', $argv[1]),
+    __DIR__ . sprintf('/Day%s/input.txt', $argv[1]),
     'r'
 );
 
 if ($fileHandle) {
     $data = new RowCollectionInput();
     while (($line = fgets($fileHandle)) !== false) {
-        $data->addRow(new Row($line));
+        $data->addRow(new Row(trim($line)));
     }
 
     fclose($fileHandle);
@@ -31,10 +31,6 @@ if (!$solution) {
     echo sprintf('Resolver for: Day \'%s\'; Part \'%s\' not found', 'one', 'first');
 
     exit;
-}
-
-if (isset($argv[3])) {
-    $solution->setHelperValue($argv[3]);
 }
 
 $result = $solution->resolve($data);

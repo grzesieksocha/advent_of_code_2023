@@ -21,8 +21,4 @@ class FirstPartSolution implements SolutionResolverInterface
 
         return new Result((string) $sum);
     }
-
-    public function setHelperValue(array $helperValue): void
-    {
-    }
 }

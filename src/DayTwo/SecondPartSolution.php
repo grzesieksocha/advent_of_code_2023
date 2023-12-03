@@ -36,10 +36,6 @@ class SecondPartSolution implements SolutionResolverInterface
         return new Result($sumOfIds);
     }
 
-    public function setHelperValue(mixed $helperValue): void
-    {
-    }
-
     /**
      * @param string $helperValue
      *

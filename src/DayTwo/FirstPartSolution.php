@@ -9,12 +9,11 @@ use GrzesiekSocha\AdventOfCode2023\Utils\SolutionResolverInterface;
 
 class FirstPartSolution implements SolutionResolverInterface
 {
-    /** @var array<{'red': int, 'green': int, 'blue': int}> */
-    private array $helperValue;
-
     public function resolve(
         InputInterface $input,
     ): ResultInterface {
+        $helperValue = $this->getMatches('12 red, 13 green, 14 blue');
+
         $sumOfIds = 0;
         foreach ($input as $row) {
             $isGood = true;
@@ -23,7 +22,7 @@ class FirstPartSolution implements SolutionResolverInterface
             $tries = array_map(trim(...), explode(';', $tries));
             foreach ($tries as $try) {
                 foreach ($this->getMatches($try) as $color => $quantity) {
-                    if ($quantity > $this->helperValue[$color]) {
+                    if ($quantity > $helperValue[$color]) {
                         $isGood = false;
 
                         break 2;
@@ -35,11 +34,6 @@ class FirstPartSolution implements SolutionResolverInterface
         }
 
         return new Result($sumOfIds);
-    }
-
-    public function setHelperValue(mixed $helperValue): void
-    {
-        $this->helperValue = $this->getMatches($helperValue);
     }
 
     /**

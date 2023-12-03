@@ -85,8 +85,4 @@ class SecondPartSolution implements SolutionResolverInterface
 
         return false;
     }
-
-    public function setHelperValue(array $helperValue): void
-    {
-    }
 }

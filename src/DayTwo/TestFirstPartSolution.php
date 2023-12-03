@@ -10,7 +10,6 @@ class TestFirstPartSolution extends TestCase
     public function testSolution(): void
     {
         $resolver = new FirstPartSolution();
-        $resolver->setHelperValue('12 red, 13 green, 14 blue');
 
         $data =
             <<<'DATA'

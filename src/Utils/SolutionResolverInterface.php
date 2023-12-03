@@ -9,8 +9,4 @@ interface SolutionResolverInterface
     public function resolve(
         InputInterface $input,
     ): ResultInterface;
-
-    public function setHelperValue(
-        array $helperValue,
-    ): void;
 }
