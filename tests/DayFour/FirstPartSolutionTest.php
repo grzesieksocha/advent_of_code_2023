@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GrzesiekSocha\AdventOfCode2023\DayFour;
+namespace GrzesiekSocha\AdventOfCode2023\Test\DayFour;
 
+use GrzesiekSocha\AdventOfCode2023\DayFour\FirstPartSolution;
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\StringConverter;
 use PHPUnit\Framework\TestCase;
 
-class TestSecondPartSolution extends TestCase
+class FirstPartSolutionTest extends TestCase
 {
-    public function testSolution1(): void
+    public function testSolution(): void
     {
-        $resolver = new SecondPartSolution();
+        $resolver = new FirstPartSolution();
 
         $data =
             <<<'DATA'
@@ -27,6 +28,6 @@ class TestSecondPartSolution extends TestCase
 
         $result = $resolver->resolve($input);
 
-        self::assertSame('30', $result->getResult());
+        self::assertSame('13', $result->getResult());
     }
 }

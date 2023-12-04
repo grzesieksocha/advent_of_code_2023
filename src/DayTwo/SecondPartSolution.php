@@ -35,7 +35,7 @@ class SecondPartSolution implements SolutionResolverInterface
             $sumOfIds += $minimumRequirements['red'] * $minimumRequirements['blue'] * $minimumRequirements['green'];
         }
 
-        return new Result((string) $sumOfIds);
+        return new Result($sumOfIds);
     }
 
     /**

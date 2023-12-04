@@ -21,7 +21,7 @@ class FirstPartSolution implements SolutionResolverInterface
         foreach ($input as $row) {
             $isGood = true;
             [$game, $tries] = Exploder::explodeByColon($row->value);
-            $gameId = Exploder::explodeByAndGetPart($game, ' ', 1);
+            $gameId = Exploder::explodeByAndGetPart(' ', $game, 1);
             $tries = Exploder::explodeBySemicolon($tries);
             foreach ($tries as $try) {
                 foreach ($this->getMatches($try) as $color => $quantity) {
@@ -36,7 +36,7 @@ class FirstPartSolution implements SolutionResolverInterface
             $sumOfIds += $isGood ? $gameId : 0;
         }
 
-        return new Result((string) $sumOfIds);
+        return new Result($sumOfIds);
     }
 
     /**

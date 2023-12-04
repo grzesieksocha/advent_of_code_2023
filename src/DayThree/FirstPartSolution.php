@@ -79,6 +79,6 @@ class FirstPartSolution implements SolutionResolverInterface
             }
         }
 
-        return new Result((string) $sumOfParts);
+        return new Result($sumOfParts);
     }
 }

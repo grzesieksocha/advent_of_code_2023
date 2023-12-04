@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace GrzesiekSocha\AdventOfCode2023\DayTwo;
+namespace GrzesiekSocha\AdventOfCode2023\Test\DayTwo;
 
+use GrzesiekSocha\AdventOfCode2023\DayTwo\SecondPartSolution;
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\StringConverter;
 use PHPUnit\Framework\TestCase;
 
-class TestSecondPartSolution extends TestCase
+class SecondPartSolutionTest extends TestCase
 {
     public function testSolution(): void
     {

@@ -10,7 +10,7 @@ use Stringable;
 readonly class Result implements ResultInterface
 {
     public function __construct(
-        private Stringable|string $result,
+        private Stringable|string|int $result,
     ) {
     }
 

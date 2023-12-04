@@ -43,6 +43,6 @@ class SecondPartSolution implements SolutionResolverInterface
         }
 
         $scratchcards = array_reduce($cardData, fn ($a, $v) => $a + $v['copies'], 0);
-        return new Result((string) $scratchcards);
+        return new Result($scratchcards);
     }
 }

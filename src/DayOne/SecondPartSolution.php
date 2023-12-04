@@ -37,7 +37,7 @@ class SecondPartSolution implements SolutionResolverInterface
             }
         }
 
-        return new Result((string) $sum);
+        return new Result($sum);
     }
 
     private function findFirstNumber(string $s): string|false {

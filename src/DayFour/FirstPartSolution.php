@@ -33,6 +33,6 @@ class FirstPartSolution implements SolutionResolverInterface
             $points += $subSum;
         }
 
-        return new Result((string) $points);
+        return new Result($points);
     }
 }

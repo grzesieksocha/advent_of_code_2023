@@ -21,6 +21,6 @@ class FirstPartSolution implements SolutionResolverInterface
             $sum += (int) ($digits[0] . $digits[array_key_last($digits)]);
         }
 
-        return new Result((string) $sum);
+        return new Result($sum);
     }
 }
