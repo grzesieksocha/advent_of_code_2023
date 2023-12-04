@@ -2,6 +2,7 @@
     "name": "grzesieksocha/advent_of_code_2023",
     "description": "Advent of Code 2023 Solutions",
     "type": "project",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "GrzesiekSocha\\AdventOfCode2023\\": "src/",
