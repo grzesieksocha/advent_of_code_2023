@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GrzesiekSocha\AdventOfCode2023\DayTwo;
 
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\InputInterface;
 use GrzesiekSocha\AdventOfCode2023\Utils\Result\Result;
 use GrzesiekSocha\AdventOfCode2023\Utils\ResultInterface;
 use GrzesiekSocha\AdventOfCode2023\Utils\SolutionResolverInterface;
+use GrzesiekSocha\AdventOfCode2023\Utils\String\Exploder;
 
 class FirstPartSolution implements SolutionResolverInterface
 {
@@ -17,9 +20,9 @@ class FirstPartSolution implements SolutionResolverInterface
         $sumOfIds = 0;
         foreach ($input as $row) {
             $isGood = true;
-            [$game, $tries] = array_map(trim(...), explode(':', $row->value));
-            $gameId = (int) explode(' ', $game)[1];
-            $tries = array_map(trim(...), explode(';', $tries));
+            [$game, $tries] = Exploder::explodeByColon($row->value);
+            $gameId = Exploder::explodeByAndGetPart($game, ' ', 1);
+            $tries = Exploder::explodeBySemicolon($tries);
             foreach ($tries as $try) {
                 foreach ($this->getMatches($try) as $color => $quantity) {
                     if ($quantity > $helperValue[$color]) {
@@ -33,7 +36,7 @@ class FirstPartSolution implements SolutionResolverInterface
             $sumOfIds += $isGood ? $gameId : 0;
         }
 
-        return new Result($sumOfIds);
+        return new Result((string) $sumOfIds);
     }
 
     /**

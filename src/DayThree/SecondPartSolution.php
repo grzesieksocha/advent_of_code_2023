@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GrzesiekSocha\AdventOfCode2023\DayThree;
 
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\InputInterface;
@@ -82,6 +84,6 @@ class SecondPartSolution implements SolutionResolverInterface
             }
         }
 
-        return new Result($sum);
+        return new Result((string) $sum);
     }
 }

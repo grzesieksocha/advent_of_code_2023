@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GrzesiekSocha\AdventOfCode2023\DayTwo;
 
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\InputInterface;
@@ -33,7 +35,7 @@ class SecondPartSolution implements SolutionResolverInterface
             $sumOfIds += $minimumRequirements['red'] * $minimumRequirements['blue'] * $minimumRequirements['green'];
         }
 
-        return new Result($sumOfIds);
+        return new Result((string) $sumOfIds);
     }
 
     /**

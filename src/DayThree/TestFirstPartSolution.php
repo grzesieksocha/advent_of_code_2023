@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GrzesiekSocha\AdventOfCode2023\DayThree;
 
 use GrzesiekSocha\AdventOfCode2023\Utils\Input\StringConverter;
