@@ -23,11 +23,30 @@ class FirstPartSolution implements SolutionResolverInterface
         $input->next();
         $input->next();
 
+        $this->remap($input, $mainMap); // soil
+        var_dump('soil done');
+        $this->remap($input, $mainMap); // fertilizer
+        var_dump('fertilizer done');
+        $this->remap($input, $mainMap); // water
+        var_dump('water done');
+        $this->remap($input, $mainMap); // light
+        var_dump('light done');
+        $this->remap($input, $mainMap); // temperature
+        var_dump('temperature done');
+        $this->remap($input, $mainMap); // humidity
+        var_dump('humidity done');
+        $this->remap($input, $mainMap); // location
+
+        return new Result(min($mainMap));
+    }
+
+    public function remap(InputInterface $input, array &$mainMap): void
+    {
         $maxValue = max($mainMap);
         $minValue = min($mainMap);
 
         $mapper = [];
-        while ($input->current()->value !== '') {
+        while ($input->valid() && $input->current()->value !== '') {
             $mappingData = Exploder::explodeByAndMap(' ', $input->current()->value, intval(...));
             $range = $mappingData[2];
             $source = $mappingData[1];
@@ -49,13 +68,8 @@ class FirstPartSolution implements SolutionResolverInterface
             }
         }
 
+        $mainMap = array_map(static fn($n) => $mapper[$n], $mainMap);
         $input->next();
-
-        var_dump($mapper);
-        $mainMap = array_map(static fn ($n) => $mapper[$n], $mainMap);
-
-        var_dump($mainMap);
-
-        return new Result(0);
+        $input->next();
     }
 }
