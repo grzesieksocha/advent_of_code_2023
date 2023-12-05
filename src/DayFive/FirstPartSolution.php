@@ -23,28 +23,19 @@ class FirstPartSolution implements SolutionResolverInterface
         $input->next();
         $input->next();
 
-        $this->remap($input, $mainMap); // soil
-        var_dump('soil done');
-        $this->remap($input, $mainMap); // fertilizer
-        var_dump('fertilizer done');
-        $this->remap($input, $mainMap); // water
-        var_dump('water done');
-        $this->remap($input, $mainMap); // light
-        var_dump('light done');
-        $this->remap($input, $mainMap); // temperature
-        var_dump('temperature done');
-        $this->remap($input, $mainMap); // humidity
-        var_dump('humidity done');
-        $this->remap($input, $mainMap); // location
+        $mainMap = $this->remap($input, $mainMap); // soil
+        $mainMap = $this->remap($input, $mainMap); // fertilizer
+        $mainMap = $this->remap($input, $mainMap); // water
+        $mainMap = $this->remap($input, $mainMap); // light
+        $mainMap = $this->remap($input, $mainMap); // temperature
+        $mainMap = $this->remap($input, $mainMap); // humidity
+        $mainMap = $this->remap($input, $mainMap); // location
 
         return new Result(min($mainMap));
     }
 
-    public function remap(InputInterface $input, array &$mainMap): void
+    public function remap(InputInterface $input, array $mainMap): array
     {
-        $maxValue = max($mainMap);
-        $minValue = min($mainMap);
-
         $mapper = [];
         while ($input->valid() && $input->current()->value !== '') {
             $mappingData = Exploder::explodeByAndMap(' ', $input->current()->value, intval(...));
@@ -52,24 +43,33 @@ class FirstPartSolution implements SolutionResolverInterface
             $source = $mappingData[1];
             $destination = $mappingData[0];
 
-            $finish = $source + $range;
-            for ($s = $source; $s < $finish; $s++) {
-                $mapper[$source] = $destination;
-                $destination++;
-                $source++;
-            }
+            $mapper[] = [
+                'range' => $range,
+                'destination' => $destination,
+                'from' => $source,
+                'to' => $source + $range - 1,
+            ];
 
             $input->next();
         }
 
-        for ($i = $minValue; $i <= $maxValue; $i++) {
-            if (!isset($mapper[$i])) {
-                $mapper[$i] = $i;
+        $tmpMap = [];
+        foreach ($mainMap as $numberToMap) {
+            $mechanismFound = false;
+            $mappingMechanism = 'not found ^^';
+            foreach ($mapper as $mappingMechanism) {
+                if ($numberToMap >= $mappingMechanism['from'] && $numberToMap <= $mappingMechanism['to']) {
+                    $mechanismFound = true;
+                    break;
+                }
             }
+
+            $tmpMap[] = !$mechanismFound ? $numberToMap : $mappingMechanism['destination'] + $numberToMap - $mappingMechanism['from'];
         }
 
-        $mainMap = array_map(static fn($n) => $mapper[$n], $mainMap);
         $input->next();
         $input->next();
+
+        return $tmpMap;
     }
 }
