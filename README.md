@@ -12,3 +12,6 @@
 ## Day 4: Scratchcards
 - `composer solve four first`
 - `composer solve four second`
+## Day 5: If You Give A Seed A Fertilizer
+- `composer solve five first`
+- `composer solve five second`

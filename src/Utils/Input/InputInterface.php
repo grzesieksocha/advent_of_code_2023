@@ -10,4 +10,6 @@ use Iterator;
 interface InputInterface extends Iterator
 {
     public function current(): Row;
+
+    public function setPosition(int $position): void;
 }

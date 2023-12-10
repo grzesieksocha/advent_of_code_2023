@@ -43,4 +43,13 @@ class RowCollectionInput implements InputInterface
     {
         $this->position = 0;
     }
+
+    public function setPosition(int $position): void
+    {
+        if (!isset($this->rows[$position])) {
+            throw new \Exception('Out of scope');
+        }
+
+        $this->position = $position;
+    }
 }
