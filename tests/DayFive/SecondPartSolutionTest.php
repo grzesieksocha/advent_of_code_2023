@@ -55,6 +55,6 @@ class SecondPartSolutionTest extends TestCase
 
         $result = $resolver->resolve($input);
 
-        self::assertSame('35', $result->getResult());
+        self::assertSame('46', $result->getResult());
     }
 }
