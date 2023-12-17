@@ -15,3 +15,9 @@
 ## Day 5: If You Give A Seed A Fertilizer
 - `composer solve five first`
 - `composer solve five second`
+## Day 5: If You Give A Seed A Fertilizer
+- `composer solve five first`
+- `composer solve five second`
+## Day 6: Wait For It
+- `composer solve six first`
+- `composer solve six second`

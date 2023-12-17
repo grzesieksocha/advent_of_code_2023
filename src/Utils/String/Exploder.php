@@ -16,6 +16,11 @@ class Exploder
         return array_map(trim(...), explode($explodeBy, $string));
     }
 
+    public static function explodeBySpace(string $string): array
+    {
+        return array_map(trim(...), explode(' ', $string));
+    }
+
     public static function explodeBySemicolon(string $string): array
     {
         return array_map(trim(...), explode(';', $string));

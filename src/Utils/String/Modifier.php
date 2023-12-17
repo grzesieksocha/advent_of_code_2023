@@ -10,4 +10,9 @@ class Modifier
     {
         return preg_replace('/\s+/', ' ', $string);
     }
+
+    public static function removeSpaces(string $string): string
+    {
+        return preg_replace('/\s+/', '', $string);
+    }
 }
