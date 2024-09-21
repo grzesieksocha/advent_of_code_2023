@@ -21,3 +21,6 @@
 ## Day 6: Wait For It
 - `composer solve six first`
 - `composer solve six second`
+## Day 7: Camel Cards
+- `composer solve seven first`
+- `composer solve seven second`
